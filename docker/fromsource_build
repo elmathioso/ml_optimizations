@@ -1,0 +1,1 @@
+docker build -f fromsource.Dockerfile -t tensorflow_source_built_2.9.0 .
