@@ -1,0 +1,1 @@
+docker build -f basic.Dockerfile -t tensorflow_unoptimized_2.9.0 .

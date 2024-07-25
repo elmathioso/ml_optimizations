@@ -2,6 +2,8 @@
 
 # docker run -it --rm -w /tensorflow_src -v $PWD:/mnt -e HOST_PERMS="$(id -u):$(id -g)" tensorflow/tensorflow:devel bash
 
+# Install custom tensorflow
+
 FROM tensorflow/tensorflow:devel
 
 RUN python -m pip uninstall tensorflow
@@ -17,3 +19,10 @@ RUN python -m pip install ./tmp/tf_pkg/*.whl
 WORKDIR /
 RUN python -c "import tensorflow as tf"
 
+# Install libs and entrypoint
+
+RUN python -m pip install tensorflow_datasets
+
+ADD ./src /src
+
+ENTRYPOINT python /src/train_model.py
